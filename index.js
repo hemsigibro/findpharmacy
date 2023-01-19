@@ -2,7 +2,7 @@ let express = require("express");
 let axios = require("axios");
 
 let app = express();
-let port = process.env.PORT || 3000;
+let port = 3000; // process.env.PORT || 80;
 
 app.use(express.static("public_html"));
 app.listen(port, function () {
