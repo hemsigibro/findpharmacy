@@ -70,15 +70,15 @@
   <body>
     <div
       style="
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
         font-weight: bold;
         text-align: center;
-        font-size: 50px;
+        font-size: 60px;
       "
     >
       지금 열려 있는 약국을 알려줘!
-      <img src="./740pill_100923.png" alt="" width="49" height="49" />
+      <img src="./740pill_100923.png" alt="" width="49" height="50" />
     </div>
     <div id="map" style="width: 100%; height: 80%"></div>
 
@@ -244,8 +244,12 @@
 
                 var contentString = [
                   '<div class="iw_inner">',
-                  "   <h3>" + dutyName + "</h3>",
-                  "   <p>" + dutyAddr + "<br />",
+                  "   <h3 style="
+                  font-weight: bold;
+                  text-align: center;
+                  font-size: 45px;">" + dutyName + "</h3>",
+                  "   <p style="
+                  font-size: 30px;">" + dutyAddr + "<br />",
                   "       " + dutyTel1 + "<br />",
                   "       " + dutyTime,
                   "   </p>",
@@ -254,11 +258,11 @@
 
                 var infowindow = new naver.maps.InfoWindow({
                   content: contentString,
-                  maxWidth: 440,
+                  maxWidth: 600,
                   backgroundColor: "#eee",
                   borderColor: "#0099FF",
-                  borderWidth: 3,
-                  anchorSize: new naver.maps.Size(30, 30),
+                  borderWidth: 5,
+                  anchorSize: new naver.maps.Size(50, 50),
                   anchorSkew: true,
                   anchorColor: "#eee",
                   pixelOffset: new naver.maps.Point(20, -20),
