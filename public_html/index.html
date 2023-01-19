@@ -151,7 +151,7 @@
               //옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 16 레벨의 지도가 생성됩니다.
               var mapOptions = {
                 center: new naver.maps.LatLng(XY.lat, XY.lng),
-                zoom: 14,
+                zoom: 15,
               };
               var map = new naver.maps.Map(mapDiv, mapOptions);
 
@@ -258,10 +258,10 @@
                   backgroundColor: "#eee",
                   borderColor: "#0099FF",
                   borderWidth: 5,
-                  anchorSize: new naver.maps.Size(50, 50),
+                  anchorSize: new naver.maps.Size(70, 70),
                   anchorSkew: true,
                   anchorColor: "#eee",
-                  pixelOffset: new naver.maps.Point(20, -20),
+                  pixelOffset: new naver.maps.Point(40, -40),
                 });
 
                 naver.maps.Event.addListener(marker, "click", function (e) {
