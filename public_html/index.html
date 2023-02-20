@@ -1,17 +1,39 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8" />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7757143500826891"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JN8KZ8LKXE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-JN8KZ8LKXE');
+    </script>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>우리 동네 심야 약국</title>
+
     <script type="text/javascript">
-      var tmsg = "";
-      var d = "";
-      var week = "";
-      var weekKor = "";
+      var tmsg = '';
+      var d = '';
+      var week = '';
+      var weekKor = '';
       function showClock() {
         var currentDate = new Date(); // 시간표시
-        var divClock = document.getElementById("divClock");
+        var divClock = document.getElementById('divClock');
 
         if (currentDate.getHours() < 10) {
           tmsg += 0;
@@ -30,17 +52,17 @@
 
         week = new Array(7, 1, 2, 3, 4, 5, 6);
         weekKor = new Array(
-          "일요일",
-          "월요일",
-          "화요일",
-          "수요일",
-          "목요일",
-          "금요일",
-          "토요일"
+          '일요일',
+          '월요일',
+          '화요일',
+          '수요일',
+          '목요일',
+          '금요일',
+          '토요일'
         );
 
         console.log(
-          tmsg + "\n" + week[d.getDay()] + "\n" + weekKor[d.getDay()]
+          tmsg + '\n' + week[d.getDay()] + '\n' + weekKor[d.getDay()]
         );
       }
     </script>
@@ -61,25 +83,29 @@
       type="text/javascript"
       src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63c8585337136371"
     ></script>
+
+    <!--네이버 웹마스터 도구 사이트 소유 확인-->
+    <meta
+      name="naver-site-verification"
+      content="0131940f93eb9739d652795534a188df8d1157d6"
+    />
   </head>
 
   <body onload="showClock()">
     <div id="divClock" class="clock"></div>
-  </body>
 
-  <body>
-    <div
+    <h1
       style="
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
         font-weight: bold;
         text-align: center;
-        font-size: 20px;
+        font-size: 60px;
       "
     >
       지금 열려 있는 약국을 알려줘!
-      <img src="./740pill_100923.png" alt="" width="19" height="19" />
-    </div>
+      <!-- <img src="./740pill_100923.png" alt="" width="49" height="50" /> -->
+    </h1>
     <div id="map" style="width: 100%; height: 80%"></div>
 
     <div
@@ -88,7 +114,7 @@
         margin-bottom: 10px;
         font-weight: light;
         text-align: center;
-        font-size: 10px;
+        font-size: 30px;
       "
     >
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -97,7 +123,10 @@
         ;
         class="addthis_inline_share_toolbox"
       ></div>
-      made by 가을하늘아빠 aajjjss@icloud.com
+
+      made by 가을하늘아빠
+      <br />
+      <a href="mailto:aajjjss@icloud.com">aajjjss@icloud.com</a>
     </div>
   </body>
 
@@ -115,10 +144,10 @@
           let items = result.items;
           // console.log(items[0].addrdetail.sido);  시도
           // console.log(items[0].addrdetail.sigugun);  시구군
-          let sido_arr = items[0].addrdetail.sido.split(" ");
-          let gugun_arr = items[0].addrdetail.sigugun.split(" ");
-          let sido = "";
-          let gugun = "";
+          let sido_arr = items[0].addrdetail.sido.split(' ');
+          let gugun_arr = items[0].addrdetail.sigugun.split(' ');
+          let sido = '';
+          let gugun = '';
           if (sido_arr.length == 1) {
             sido = sido_arr[0];
             gugun = gugun_arr[0];
@@ -130,28 +159,28 @@
           console.log(gugun);
 
           $.ajax({
-            url: "/pharmacy_list",
-            type: "GET",
+            url: '/pharmacy_list',
+            type: 'GET',
             cache: false,
-            dataType: "json",
+            dataType: 'json',
             data: {
               Q0: sido,
-              Q1: "", // gugun
-              QT: "",
-              QN: "",
-              ORD: "",
-              pageNo: "1",
-              numOfRows: "1000",
+              Q1: '', // gugun
+              QT: '',
+              QN: '',
+              ORD: '',
+              pageNo: '1',
+              numOfRows: '1000',
             },
             success: function (data) {
               console.log(data);
               // 지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
-              var mapDiv = document.getElementById("map"); // 'map'으로 선언해도 동일
+              var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
 
               //옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 16 레벨의 지도가 생성됩니다.
               var mapOptions = {
                 center: new naver.maps.LatLng(XY.lat, XY.lng),
-                zoom: 14,
+                zoom: 15,
               };
               var map = new naver.maps.Map(mapDiv, mapOptions);
 
@@ -160,7 +189,7 @@
                 let dutyAddr = it.dutyAddr; //주소
                 let dutyTel1 = it.dutyTel1; // 전화번호
 
-                let dutyTime = "";
+                let dutyTime = '';
 
                 let dutyTimeWeekS = new Array(
                   it.dutyTime7s,
@@ -191,11 +220,11 @@
                 ) {
                   dutyTime +=
                     weekKor[d.getDay()] +
-                    " : " +
+                    ' : ' +
                     dutyTimeWeekS[d.getDay()] +
-                    " ~ " +
+                    ' ~ ' +
                     dutyTimeWeekC[d.getDay()] +
-                    "<br>";
+                    '<br>';
                   if (
                     it.dutyTime8s &&
                     it.dutyTime8c &&
@@ -203,11 +232,11 @@
                     it.dutyTime8s < tmsg
                   ) {
                     dutyTime +=
-                      "공휴일: " +
+                      '공휴일: ' +
                       it.dutyTime8s +
-                      " ~ " +
+                      ' ~ ' +
                       it.dutyTime8c +
-                      "<br>";
+                      '<br>';
                   }
                 } else {
                   return;
@@ -239,32 +268,50 @@
 
                 let marker = new naver.maps.Marker({
                   map: map,
+                  icon: {
+                    url: './740pill_100923.png',
+                    size: new naver.maps.Size(100, 100),
+                    scaledSize: new naver.maps.Size(100, 100),
+                    origin: new naver.maps.Point(0, 0),
+                    anchor: new naver.maps.Point(60, 50),
+                  },
                   position: pharmacy_location,
                 });
 
                 var contentString = [
                   '<div class="iw_inner">',
-                  "   <h3>" + dutyName + "</h3>",
-                  "   <p>" + dutyAddr + "<br />",
-                  "       " + dutyTel1 + "<br />",
-                  "       " + dutyTime,
-                  "   </p>",
-                  "</div>",
-                ].join("");
+                  '   <h1>' + dutyName + '</h1>',
+                  '   <p style="font-size:30px;">' + dutyAddr + '<br />',
+                  '<a href="tel:' + dutyTel1 + '">' + dutyTel1 + '</a>',
+                  '<br />',
+                  '       ' + dutyTime,
+                  '   </p>',
+                  '</div>',
+                ].join('');
+
+                // var contentString = [
+                // '<div class="iw_inner">',
+                // '   <h1>' + dutyName + '</h1>',
+                // '   <p style="font-size:30px;">' + dutyAddr + '<br />',
+                // '       ' + dutyTel1 + '<br />',
+                // '       ' + dutyTime,
+                // '   </p>',
+                // '</div>',
+                // ].join('');
 
                 var infowindow = new naver.maps.InfoWindow({
                   content: contentString,
-                  maxWidth: 440,
-                  backgroundColor: "#eee",
-                  borderColor: "#0099FF",
-                  borderWidth: 3,
+                  maxWidth: 600,
+                  backgroundColor: '#eee',
+                  borderColor: '#0099FF',
+                  borderWidth: 5,
                   anchorSize: new naver.maps.Size(30, 30),
                   anchorSkew: true,
-                  anchorColor: "#eee",
+                  anchorColor: '#eee',
                   pixelOffset: new naver.maps.Point(20, -20),
                 });
 
-                naver.maps.Event.addListener(marker, "click", function (e) {
+                naver.maps.Event.addListener(marker, 'click', function (e) {
                   if (infowindow.getMap()) {
                     infowindow.close();
                   } else {
